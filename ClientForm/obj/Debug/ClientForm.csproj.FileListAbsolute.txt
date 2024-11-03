@@ -28,3 +28,13 @@ D:\chatgrouup\ClientForm\obj\Debug\ClientForm.csproj.GenerateResource.cache
 D:\chatgrouup\ClientForm\obj\Debug\ClientForm.csproj.CoreCompileInputs.cache
 D:\chatgrouup\ClientForm\obj\Debug\ClientForm.exe
 D:\chatgrouup\ClientForm\obj\Debug\ClientForm.pdb
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\bin\Debug\ClientForm.exe.config
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\bin\Debug\ClientForm.exe
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\bin\Debug\ClientForm.pdb
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.csproj.AssemblyReference.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.ClientForm.resources
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.Properties.Resources.resources
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.csproj.GenerateResource.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.csproj.CoreCompileInputs.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.exe
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\ClientForm\obj\Debug\ClientForm.pdb

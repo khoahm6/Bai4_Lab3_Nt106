@@ -38,3 +38,13 @@ D:\chatgrouup\SocketChat\obj\Debug\SocketChatServer.csproj.GenerateResource.cach
 D:\chatgrouup\SocketChat\obj\Debug\SocketChatServer.csproj.CoreCompileInputs.cache
 D:\chatgrouup\SocketChat\obj\Debug\SocketChat.exe
 D:\chatgrouup\SocketChat\obj\Debug\SocketChat.pdb
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\bin\Debug\SocketChat.exe.config
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\bin\Debug\SocketChat.exe
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\bin\Debug\SocketChat.pdb
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChatServer.csproj.AssemblyReference.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChat.Form1.resources
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChat.Properties.Resources.resources
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChatServer.csproj.GenerateResource.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChatServer.csproj.CoreCompileInputs.cache
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChat.exe
+D:\NT106\ThucHanh\LAB3\Bai4_Lab3_Nt106\SocketChat\obj\Debug\SocketChat.pdb

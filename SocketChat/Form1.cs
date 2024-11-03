@@ -27,6 +27,13 @@ namespace SocketChat
         private List<Socket> clientSockets = new List<Socket>();
         private Dictionary<Socket, string> clientNames = new Dictionary<Socket, string>();
         private List<string> connectedClients = new List<string>();
+
+        public enum MessageType
+        {
+            Text,
+            FileEof,
+            FilePart,
+        }
         public Form1()
         {
             InitializeComponent();

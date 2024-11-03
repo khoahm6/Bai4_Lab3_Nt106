@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ClientForm
 {
@@ -18,8 +19,16 @@ namespace ClientForm
     {
         private Socket clientSocket = null;
         private static int _buff_size = 2048;
+        public const int FileBufferSize = 3072;
         private delegate void SafeCallDelegate(string text, Control obj);
         private Thread recvThread = null;
+
+        public enum MessageType
+        {
+            Text,
+            FileEof,
+            FilePart,
+        }
         public ClientForm()
         {
             InitializeComponent();
@@ -166,7 +175,84 @@ namespace ClientForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            string filePath = string.Empty;
+            byte[] sendingBuffer = null;
+
+            try
+            {
+                // Kiểm tra nếu ClientSocket đã kết nối
+                if (clientSocket != null && clientSocket.Connected)
+                {
+                    using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                    {
+                        openFileDialog.InitialDirectory = "c:\\";
+                        openFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                        openFileDialog.FilterIndex = 2;
+                        openFileDialog.RestoreDirectory = true;
+
+                        if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            filePath = openFileDialog.FileName;
+
+                            // Tạo một thread riêng để gửi file
+                            Thread sendFileThread = new Thread(() =>
+                            {
+                                try
+                                {
+                                    using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                                    {
+                                        int NoOfPackets = (int)Math.Ceiling((double)fileStream.Length / FileBufferSize);
+                                        int TotalLength = (int)fileStream.Length;
+                                        int CurrentPacketLength, counter = 0;
+
+                                        for (int i = 0; i < NoOfPackets; i++)
+                                        {
+                                            if (TotalLength > FileBufferSize)
+                                            {
+                                                CurrentPacketLength = FileBufferSize;
+                                                TotalLength -= CurrentPacketLength;
+                                            }
+                                            else
+                                            {
+                                                CurrentPacketLength = TotalLength;
+                                            }
+
+                                            byte[] fileBuffer = new byte[CurrentPacketLength];
+                                            int bytesRead = fileStream.Read(fileBuffer, 0, CurrentPacketLength); // Đọc dữ liệu file
+
+                                            MessageType msgType = (i == NoOfPackets - 1) ? MessageType.FileEof : MessageType.FilePart;
+                                            string header = $"FILE|{textBox3.Text}|{msgType};";
+                                            byte[] headerBytes = Encoding.UTF8.GetBytes(header);
+                                            byte[] sendingBytes = headerBytes.Concat(fileBuffer).ToArray();
+
+                                            clientSocket.Send(sendingBytes, 0, sendingBytes.Length, SocketFlags.None); // Gửi dữ liệu
+                                        }
+                                    }
+
+                                    MessageBox.Show("File sent successfully.");
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show($"Error sending file: {ex.Message}");
+                                }
+                            });
+
+                            // Khởi động thread
+                            sendFileThread.Start();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Not connected to the server.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+
+            /*OpenFileDialog openFileDialog = new OpenFileDialog();
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog.FileName;
@@ -207,7 +293,7 @@ namespace ClientForm
                     MessageBox.Show("Error sending file: " + ex.Message);
                 }
             }
-
+*/
         }
         private void ProcessClientList(string clientListStr)
         {
